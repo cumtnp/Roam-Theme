@@ -1,0 +1,212 @@
+
+/*
+* edit by king & codeMark 
+* 参考了azlen 的最初的设计思想。只适用于 最新版本的roamResearch
+*/
+
+
+:root { 
+    --page-width: 700px;
+    --page-order: row-reverse; /* new pages show up to the right */
+    --page-order: row; /* new pages show up to the left */
+    
+    --header-font: "Source Sans Pro", "Inter", sans-serif;  
+    --body-font: "Source Sans Pro", "Inter", sans-serif;    
+        
+    --bg-color: #EEEEEE;    
+    --page-color: rgba(255, 255, 255, 0.95);    
+
+    --embed-bg-color: #EEEEEE35;    
+    --embed-border-color: #E8E8E8;  
+  
+    --text-color: #444444;  
+    --icon-color: #5c7080;/* #5c7080;#DC4B4E;*/
+    --bullet-color: rgba(0, 0, 0, 0.2);
+  
+    --page-shadow: 0px 8px 14px rgba(0, 0, 0, 0.1); 
+
+    --color-primary: 225, 100, 101;/*251, 59, 59*/ 
+    --color-primary-contrast: #FFFFFF;  
+  
+    --color-secondary: 17, 146, 146;/*40, 116, 166 147, 100, 235*/
+    --color-secondary-contrast: #FFFFFF;
+
+    --head-text-color: #505050;
+
+    --txt-font-size: 18px;              /*text size */
+    --Bold-font-size: 18px;             /*text size */
+  
+}
+
+/* text font size*/
+body,html, .rm-block-text , .zoom-mentions-view{
+    font-size: var(--txt-font-size) !important;
+    /*line-height: calc(1.4*var(--txt-font-size)) !important;*/
+    min-height: calc(1.4*var(--txt-font-size)) !important;
+
+}
+
+
+
+.roam-article >div{
+    border-radius: 10px;
+    margin-top: 1px !important;
+}
+
+
+/* 搜索栏 */
+.rm-search-list-item {color:#000 !important;}
+.rm-search-list-item span span[style*="background-color: "] {background-color:#c4edf1 !important; border-radius:3px !important; padding:1px 2px !important;}
+
+/* 左侧菜单栏 */
+.log-button:hover,
+.roam-sidebar-content a:hover div {background:none !important; color:#000 !important;}
+
+/* 整体可以横向滚动 */
+.roam-app .flex-h-box:nth-child(2) {overflow:scroll hidden !important;}
+
+/* 整体背景颜色统一为灰色 */
+body, .roam-sidebar-container, .roam-main, .roam-topbar, #right-sidebar {background:#eee !important;}
+
+/* 正文 */
+.roam-body-main {flex:0 0 calc(100% - 70px) !important;}
+.roam-body-main>div:not(#buffer) {padding-right:0 !important; margin:0 20px !important; border-radius:10px !important; background:#fff !important; border-bottom:8px solid #fff;}
+.roam-body-main .roam-article {padding:42px 40px 40px !important; width:700px !important; background:#fff !important; border-radius:10px !important; overflow:hidden !important;}
+
+.roam-body-main .roam-article .rm-reference-main>div>div {margin-top:40px !important; padding-top:40px !important; border-top:1px solid #ddd !important;}
+
+/* 主体和右侧栏：去掉弹性布局，改为左浮动 */
+.roam-main, #right-sidebar {float:left !important; flex:none !important;}
+.sidebar-content {float:left !important;}
+
+/* 右侧栏：顶部条细节调整 */
+#right-sidebar {padding-top:0 !important;}
+#right-sidebar .flex-h-box {height:45px !important;}
+#right-sidebar #roam-right-sidebar-content .flex-h-box {height:auto !important;}
+
+/* 右侧栏：item 细节调整 */
+.sidebar-content>div {float:left !important; margin-right:20px; /*width:620px !important; height:calc(100vh - 90px) !important; overflow:auto !important;*/ border-radius:10px !important; background:#fff !important;}
+.sidebar-content>div>div {margin-left:0px !important; margin-right:0px !important; padding-left:40px !important; padding-right:40px !important; border-bottom:0 !important;}
+.sidebar-content>div>div>div.window-headers div:nth-child(2) span {display:none;}
+.sidebar-content>div>div>div.window-headers div:nth-child(2) a {display:block; padding:10px; font-size:26px; color:#000;}
+
+.sidebar-content .rm-sidebar-card,
+.sidebar-content .rm-sidebar-outline,
+.sidebar-content .rm-reference-main {margin-left:-20px !important; padding-left:20px !important; width:640px !important; max-height:calc(100vh - 125px) !important; overflow:hidden auto !important;padding-bottom:60px !important;}
+.sidebar-content .rm-reference-main {max-height:calc(100vh - 165px) !important;}
+
+.sidebar-content>div>div>div:nth-child(2)>div:nth-child(1) {margin-top:0 !important; margin-right:0 !important;}
+#roam-right-sidebar-content {overflow:scroll hidden !important;}
+.rm-reference-main {padding:0 20px;}
+    
+    /* 主体和侧栏标题 */
+.roam-article h1.rm-title-display,
+.rm-sidebar-outline h1.rm-title-display {margin:0 !important; padding:0 10px 20px !important; font-size:26px !important;}
+.rm-title-editing-display {margin:0 !important;}
+.rm-title-editing-display .rm-title-textarea {margin:0 !important; padding:0 10px 20px !important; font-size:26px !important;}
+
+/* 右侧栏：右上角 pin、filter 图标放到顶部 */
+.sidebar-content div[style*="align-items: flex-end; float: right; margin-top: -8px; z-index: 999; justify-content: flex-end; display: flex; position: relative; margin-right: -16px; flex-direction: column;"],
+.sidebar-content div[style*="display: flex; flex-direction: column; float: right; position: relative; margin-top: -8px; margin-right: -16px; justify-content: flex-end; align-items: flex-end;"] {position:absolute !important; top:-38px !important; right:60px !important; flex-direction:row !important;}
+.sidebar-content div[style*="align-items: flex-end; float: right; margin-top: -8px; z-index: 999; justify-content: flex-end; display: flex; position: relative; margin-right: -16px; flex-direction: column;"]>span:nth-last-child(1):first-child,
+.sidebar-content div[style*="display: flex; flex-direction: column; float: right; position: relative; margin-top: -8px; margin-right: -16px; justify-content: flex-end; align-items: flex-end;"]>span:nth-last-child(1):first-child {display:none;}
+
+/* All Pages 美化 */
+.rm-all-pages {width:1000px !important;}
+.rm-all-pages>div {width:900px !important;}
+.rm-all-pages .table .rm-pages-row {padding-left:10px !important;}
+.rm-all-pages .table .rm-pages-row>div {padding:0 !important; line-height:inherit !important;}
+.rm-all-pages .table .rm-pages-row:nth-child(even) {background:#eddada !important;}
+#rm-all-pages-column-titles {height:50px !important; line-height:50px !important; background:#e9b7b8 !important;}
+#rm-all-pages-column-titles>div {padding:0 !important; line-height:inherit !important; color:#000 !important;}
+
+/* 左上角 tooltip 功能区 */
+.top-row:hover {background:#e9b7b8 !important;}
+.rm-db-title {color:#000 !important;}
+.rm-db-title-container .bp3-transition-container {transform:none !important; top:60px !important; left:20px !important;}
+
+/* 隐藏 resize 竖条 */
+.rm-resize-handle {display:none;}
+
+/* 右下角 help */
+#buffer {background:#53aead !important;}
+#buffer a {color:#fff !important;}
+
+/* 其他：全局字体颜色样式等 */
+.rm-page-ref-link-color {color:#e16465 !important; font-weight:bold !important;}
+.rm-ref-page-view-title a span {color:#119292 !important; font-weight:bold !important;}
+.rm-alias-external {color:#119292 !important;}
+.rm-alias-page {color:#e16465 !important;}
+
+.rm-reference-item .rm-zoom {display:none;}
+
+/* 展开三角垂直居中 */
+.block-expand>span {float:left;}
+
+/*topbar 提醒字体颜色 */
+.bp3-transition-container strong{
+    color: #FFF !important;/* #2E8B57 #4E8888;*/
+}
+.sidebar-content>div>div.flex-h-closed-outer {
+    padding-left:0 !important; padding-right:0 !important;
+    margin-right: 0px !important;
+}
+.sidebar-content>div>div>div.flex-h-closed {
+    margin-left:0 !important;
+    padding-left:0px !important;
+    padding-right: 0px !important;
+}
+.sidebar-content>div>div>div.flex-h-closed div:nth-child(2) {width:26px !important;}
+.sidebar-content>div>div>div.flex-h-closed div:nth-child(2) a{
+    width: 26px;
+    padding-left:0 !important;
+    padding-right:0 !important;
+    margin-top: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 30px;
+    word-wrap: break-word;
+    word-break:break-all;
+    text-align:center !important;
+    writing-mode: vertical-rl;
+}
+.sidebar-content div[draggable="true"] {margin-left:0 !important; margin-right:0 !important;}
+
+div.flex-h-closed-outer>div[draggable=true] {background:#fff; border-radius:10px !important;}
+div.flex-h-closed-outer>div[draggable=true] .bp3-icon-standard.bp3-icon-caret-down.rm-caret.rm-caret-open.rm-caret-showing::before,
+div.flex-h-closed-outer>div[draggable=true] .bp3-icon-standard.bp3-icon-caret-down.rm-caret.rm-caret-closed.rm-caret-showing::before{
+    font-size:18px !important; 
+    line-height:20px !important;
+    padding-left:2px !important;
+}
+
+div.flex-h-closed>span.bp3-icon {
+    margin-top: -4px !important;
+}
+
+div.flex-h-closed>button.bp3-small {
+    display: none;
+}
+
+/*
+.sidebar-content>div>div>div.flex-h-closed>span.p3-small {
+    margin-left:0px !imprtant;
+}
+*/
+div.flex-h-closed>span.bp3-button.bp3-minimal {
+    width:23px; height:23px;
+    text-align:center !important;
+    /*margin-top: 5px;
+    margin-left: 5px;
+    margin-right: -5px;*/
+}   
+
+
+
+/* 修改关闭后的两个小 icon 位置 */
+#roam-right-sidebar-content {overflow:visible !important;}
+.sidebar-content>div>div>div.flex-h-closed {position:relative; padding-top:0 !important; padding-left:20px !important; padding-right:20px !important;}
+.sidebar-content>div>div>div.flex-h-closed span.bp3-minimal {position:absolute; top:-30px; left:50%; -webkit-transform:translate(-50%, 0); transform:translate(-50%, 0); display:block !important; width:24px !important; height:24px !important; line-height:24px !important; text-align:center !important; overflow:hidden !important;}
+.sidebar-content>div>div>div.flex-h-closed span.bp3-minimal:hover {background:rgba(167,182,194,0.3) !important; border-radius:3px !important;}
+.sidebar-content>div>div>div.flex-h-closed span.bp3-minimal .bp3-icon-caret-down::before {content:'+' !important;}
+.sidebar-content>div>div>div.flex-h-closed span.bp3-minimal.bp3-icon-cross {top:auto !important; bottom:12px !important;}
